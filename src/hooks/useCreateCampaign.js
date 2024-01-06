@@ -15,7 +15,8 @@ export const useCreateCampaign = () => {
         await addDoc(transactionCollectionRef, {
             creator: userID,
             description: description,
-            name: campaignName
+            name: campaignName,
+            players: [userID]
         });
     };
      return {createCampaign};
