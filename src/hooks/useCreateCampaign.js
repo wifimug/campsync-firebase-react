@@ -2,10 +2,9 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 import { useGetUserInfo } from './useGetUserInfo';
 
-export const useAddCampaign = () => {
+export const useCreateCampaign = () => {
     const transactionCollectionRef = collection(db, "campaigns");
-    const { userID } = useGetUserInfo();
-    const addCampaign = async ({
+    const createCampaign = async ({
         userID, 
         description, 
         campaignName
@@ -19,6 +18,6 @@ export const useAddCampaign = () => {
             name: campaignName
         });
     };
-     return {addCampaign};
+     return {createCampaign};
 
 }

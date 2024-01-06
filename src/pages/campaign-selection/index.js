@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { useAddCampaign } from "../../hooks/useAddCampaign";
+import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 
 export const CampaignSelection = () => {
 
-    const { addCampaign } = useAddCampaign();
+    const { createCampaign } = useCreateCampaign();
     const { userID } = useGetUserInfo();
     const [campaignName, setCampaignName] = useState("");
     const [description, setDescription] = useState("");
 
-    const addCampaignSubmit = (e) => {    //form for creating a new campaign
+    const createCampaignSubmit = (e) => {    //form for creating a new campaign
         e.preventDefault();
-        addCampaign({
+        createCampaign({
             userID,
             campaignName,
             description
@@ -28,7 +28,7 @@ export const CampaignSelection = () => {
     return (
         <>
         <h1>CampaignSelection</h1>
-        <form className="addCampaign" onSubmit={addCampaignSubmit}>
+        <form className="createCampaign" onSubmit={createCampaignSubmit}>
             <input 
                 type="text"
                 placeholder="Campaign Name"
@@ -43,7 +43,7 @@ export const CampaignSelection = () => {
                 required
                 onChange={(e) => setDescription(e.target.value)}
             />
-            <button type="submit"> Add Campaign </button>
+            <button type="submit"> Create Campaign </button>
         </form>
 
         <form className="joinCampaign">
