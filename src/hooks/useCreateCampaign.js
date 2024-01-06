@@ -1,6 +1,5 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase-config";
-import { useGetUserInfo } from './useGetUserInfo';
 
 export const useCreateCampaign = () => {
     const transactionCollectionRef = collection(db, "campaigns");
