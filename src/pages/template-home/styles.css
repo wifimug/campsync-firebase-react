@@ -1,0 +1,56 @@
+@import "../../theme-variables.css";
+
+.expense-tracker {
+    font-style: normal;
+    display: flex;
+}
+
+
+.container {
+    display: block;
+    align-items: center;
+    padding-left: 10%;
+    padding: 100px;
+    background-color: antiquewhite;
+}
+
+h1 {
+    color: var(--navbar-color);
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.profile-container{
+    position: absolute;
+    float: right;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(201, 175, 140);
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-photo {
+    margin: 20px;
+    border-radius: 50%;
+    border-color: var(--navbar-color);
+    border-width: 10px;
+    border-style: double;
+}
+
+.sign-out-btn {
+    align-self: center;
+    cursor: pointer;
+    border-color: var(--red-button-color);
+    border-radius: 16px;
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--red-button-color);
+  }
+
+.income {
+    font-style: italic;
+}

@@ -40,6 +40,7 @@ export const ExpenseTracker = () => {
     };    
     return (
     <>
+    <div className="navbar">CampSync.</div>
     <div className="expense-tracker">
         <div className="container">
             <h1> {name}'s Expense Tracker </h1>
@@ -89,14 +90,17 @@ export const ExpenseTracker = () => {
             </form>
         </div>
         {profilePhoto && (
-        <div className="profile"> 
-            { " " }
-            <img className="profile-photo" src={profilePhoto} width="200" />
-            <button className="sign-out-btn" onClick={signUserOut}> 
-                Sign Out
-            </button>
+            <div className="profile-container">
+                <div className="profile"> 
+                    { " " }
+                    <img className="profile-photo" src={profilePhoto} width="200" />
+                    <button className="sign-out-btn" onClick={signUserOut}> 
+                        Sign Out
+                    </button>
 
-        </div>
+                </div>
+            </div>
+        
         )}
         
     </div>
