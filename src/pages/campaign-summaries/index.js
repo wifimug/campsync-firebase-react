@@ -1,3 +1,11 @@
+import { useGetCampaignByID } from "../../hooks/useGetCampaignByID"
+
+
 export const CampaignSummaries = () => {
-    return <p>CampaignSummaries</p>
+    const currentCampaign = useGetCampaignByID();
+    const campaignID = localStorage.getItem("currentCampaign");
+
+    return <>
+        <p>CampaignSummaries {campaignID}</p>
+    </>
 }

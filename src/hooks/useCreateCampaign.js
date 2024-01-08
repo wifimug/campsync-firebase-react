@@ -1,24 +1,26 @@
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../config/firebase-config";
-import { useGetUserInfo } from './useGetUserInfo';
 
 export const useCreateCampaign = () => {
-    const transactionCollectionRef = collection(db, "campaigns");
+    const campaignCollectionRef = collection(db, "campaigns");
     const createCampaign = async ({
         userID, 
         description, 
         campaignName
     }) => {
-        console.log(userID);
-        console.log(description);
-        console.log(campaignName);
-        await addDoc(transactionCollectionRef, {
+
+        const campaignRef = await addDoc(campaignCollectionRef, {
             creator: userID,
             description: description,
             name: campaignName,
             players: [userID]
         });
+
+        console.log("id of new campaign: ",campaignRef.id);
+
+        localStorage.setItem("currentCampaign", campaignRef.id);
     };
-     return {createCampaign};
+
+    return {createCampaign};
 
 }
