@@ -16,7 +16,7 @@ export const useCreateCampaign = () => {
             players: [userID]
         });
 
-        console.log("id of new campaign: ",campaignRef.id);
+        //console.log("id of new campaign: ",campaignRef.id);
 
         localStorage.setItem("currentCampaign", campaignRef.id);
     };
