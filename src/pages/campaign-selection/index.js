@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
+import { NavBar } from '../../navbar';
 
 export const CampaignSelection = () => {
     const navigate = useNavigate();
@@ -26,6 +27,7 @@ export const CampaignSelection = () => {
 
     return (
         <>
+        <NavBar/>
         <h1>CampaignSelection</h1>
         <form className="createCampaign" onSubmit={createCampaignSubmit}>
             <input 

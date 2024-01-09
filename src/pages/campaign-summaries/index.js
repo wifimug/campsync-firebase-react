@@ -1,3 +1,11 @@
+import { NavBar } from "../../navbar";
+
 export const CampaignSummaries = () => {
-    return <p>CampaignSummaries</p>
+    return (
+    <>
+    <NavBar/>
+    <p>CampaignSummaries</p>
+    </>
+    
+    )
 }

@@ -6,6 +6,7 @@ import './styles.css';
 import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import { useNavigate } from "react-router-dom";
+import { NavBar } from "../../navbar";
 
 export const ExpenseTracker = () => {
     const { addTransaction } = useAddTransaction();
@@ -40,7 +41,7 @@ export const ExpenseTracker = () => {
     };    
     return (
     <>
-    <div className="navbar">CampSync.</div>
+    <NavBar/>
     <div className="expense-tracker">
         <div className="container">
             <h1> {name}'s Expense Tracker </h1>
