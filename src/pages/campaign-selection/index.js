@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 
@@ -23,9 +23,6 @@ export const CampaignSelection = () => {
         navigate("/campaign-summaries");
     };
 
-    const joinCampaign = (e) => {   //form for joining an existing campaign
-
-    };
 
     return (
         <>
