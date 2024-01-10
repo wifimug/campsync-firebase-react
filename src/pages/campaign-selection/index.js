@@ -11,9 +11,9 @@ export const CampaignSelection = () => {
     const [campaignName, setCampaignName] = useState("");
     const [description, setDescription] = useState("");
 
-    const createCampaignSubmit = (e) => {    //form for creating a new campaign
+    const createCampaignSubmit = async (e) => {    //form for creating a new campaign
         e.preventDefault();
-        createCampaign({
+        await createCampaign({
             userID,
             campaignName,
             description
