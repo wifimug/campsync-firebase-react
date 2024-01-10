@@ -87,7 +87,7 @@ export const ExpenseTracker = () => {
                 required 
                 onChange={(e) => setTransactionType(e.target.value)} />
                 <label htmlFor="income"> Income </label>
-                <button type="submit"> Add Transaction </button>
+                <button type="submit" className="add-transaction-btn"> Add Transaction </button>
             </form>
         </div>
         {profilePhoto && (

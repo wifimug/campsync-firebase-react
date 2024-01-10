@@ -8,10 +8,26 @@
 
 .container {
     display: block;
-    align-items: center;
+    text-align: left;
     padding-left: 10%;
     padding: 100px;
-    background-color: antiquewhite;
+    background-color: rgb(235, 216, 193);
+    border-radius: 0 0 20px 0;
+}
+
+.add-transaction-btn {
+    margin-top: 20px;
+
+}
+
+form {
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+input {
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 h1 {
@@ -20,15 +36,14 @@ h1 {
 }
 
 .profile-container{
-    position: absolute;
-    float: right;
+    position: auto;    
 }
 
 .profile {
     display: flex;
     flex-direction: column;
-    background-color: rgb(201, 175, 140);
-    padding: 20px;
+    /* background-color: rgb(201, 175, 140); */
+    padding: 140px 80px;
     align-items: center;
     justify-content: center;
 }
