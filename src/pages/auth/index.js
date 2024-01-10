@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import './styles.css';
+import { NavBar } from "../../navbar";
 
 export const Auth = () => {
 
@@ -27,11 +28,16 @@ export const Auth = () => {
         return <Navigate to="/expense-tracker" />
     }
     
-    return <div className="login-page">
-        <p>Sign in with Google to Continue</p>
-        <button className="sign-in-with-google-btn" onClick={signInWithGoogle}> 
-        {""}
-            Sign in with Google 
-        </button>
-    </div>;
+    return (
+        <>
+        <NavBar/>
+        <div className="login-page">
+            <p>Sign in with Google to Continue</p>
+            <button className="sign-in-with-google-btn" onClick={signInWithGoogle}> 
+            {""}
+                Sign in with Google 
+            </button>
+        </div>;
+        </>
+    )
 }

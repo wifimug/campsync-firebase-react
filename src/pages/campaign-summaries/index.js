@@ -1,4 +1,5 @@
 import { useGetCampaignByID } from "../../hooks/useGetCampaignByID"
+import { NavBar } from "../../navbar";
 
 
 export const CampaignSummaries = () => {
@@ -8,10 +9,13 @@ export const CampaignSummaries = () => {
 
     //console.log("outside hook");
 
-    return <>
+    return (
+      <>
+        <NavBar/>
         <h1>Campaign Summaries</h1>
         <p>Campaign ID: {campaignID}</p>
         <p>Campaign name: {campaignName}</p>
         <p>Campaign description: {campaignDesc}</p>
-    </>
+      </>
+  )
 }
