@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../config/firebase-config';
 import { doc, getDoc } from "firebase/firestore";
 
-export const useGetCampaignByID = ({props}) => {
+export const useGetCampaignByID = (props) => {
     // let [campaign, setCampaign] = useState({
     //     players: [],
     //     creator: "",
@@ -15,7 +15,8 @@ export const useGetCampaignByID = ({props}) => {
     // const campaignSnap = getDoc(campaignRef);
     // campaign = campaignSnapawait.data();
 
-    const campaignID = props
+    const campaignID = props;
+    console.log(props)
 
     const [campaignName, setCampaignNames] = useState("");
     const [campaignDesc, setCampaignDesc] = useState("");
@@ -23,7 +24,7 @@ export const useGetCampaignByID = ({props}) => {
 
     const getCampaign = async () => {
         
-        const ref = doc(db, "campaigns", "doVE7nXY8lukkPykw6hM");
+        const ref = doc(db, "campaigns", campaignID);
         const campaignDoc = await getDoc(ref);
 
         if (!campaignDoc.exists()) {
