@@ -6,22 +6,22 @@ import { db } from "../config/firebase-config";
 
 export const useGetCampaigns = () => {
     const [campaigns, setCampaigns] = useState([]);
-
-    const playerCollectionRef = collection(db, "players");
+    const campaignCollectionRef = collection(db, "campaigns");
     const { userID } = useGetUserInfo();
 
     const getCampaigns = async () => {
         let i;
         try {
-            const queryPlayers = query(playerCollectionRef, where("user", "==", userID));
+            const queryCampaigns = query(campaignCollectionRef, where("players", "array-contains", userID));
 
-            i = onSnapshot(queryPlayers, (snapshot) => {
+            i = onSnapshot(queryCampaigns, (snapshot) => {
 
                 let docs = [];
 
                 snapshot.forEach((doc) => {
-                    const player = doc.data();
-                    docs.push(player["campaign"])
+                    const campaign = doc.data();
+                    const id = doc.id;
+                    docs.push({...campaign, id});
                 })
 
                 setCampaigns(docs);
@@ -37,6 +37,5 @@ export const useGetCampaigns = () => {
         getCampaigns()
     }, []);
 
-    console.log(campaigns);
     return { campaigns };
 }

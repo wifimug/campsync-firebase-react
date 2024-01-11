@@ -4,6 +4,7 @@ import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 import { NavBar } from '../../navbar';
 import { useGetCampaigns } from '../../hooks/useGetCampaigns';
+import { useGetCampaignByID } from '../../hooks/useGetCampaignByID';
 
 export const CampaignSelection = () => {
     const navigate = useNavigate();
@@ -13,7 +14,6 @@ export const CampaignSelection = () => {
     const [description, setDescription] = useState("");
 
     const { campaigns } = useGetCampaigns();
-    console.log(campaigns);
 
     const createCampaignSubmit = async (e) => {    //form for creating a new campaign
         e.preventDefault();
@@ -27,7 +27,6 @@ export const CampaignSelection = () => {
         setDescription("");
         navigate("/campaign-summaries");
     };
-
 
     return (
         <>
@@ -59,7 +58,20 @@ export const CampaignSelection = () => {
             <h3> Joined Campaigns </h3>
             <ul>
                 {campaigns.map((campaign) => {
-                    return <li> {campaign} </li>
+                    return <li>
+                        <h4>
+                            Name: {campaign["name"]}
+                        </h4>
+                        <h5>
+                            Description: {campaign["description"]}
+                        </h5>
+                        <div className="campaignSelect" onClick={async () => {
+                            await localStorage.setItem("currentCampaign", campaign.id);
+                            navigate("/campaign-summaries")
+                        }}>
+                            Select 
+                        </div>
+                    </li>
                 })}
             </ul>
         </div>
