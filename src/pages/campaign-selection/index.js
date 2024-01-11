@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 import { NavBar } from '../../navbar';
+import { useGetCampaigns } from '../../hooks/useGetCampaigns';
 
 export const CampaignSelection = () => {
     const navigate = useNavigate();
@@ -10,6 +11,9 @@ export const CampaignSelection = () => {
     const { userID } = useGetUserInfo();
     const [campaignName, setCampaignName] = useState("");
     const [description, setDescription] = useState("");
+
+    const { campaigns } = useGetCampaigns();
+    console.log(campaigns);
 
     const createCampaignSubmit = async (e) => {    //form for creating a new campaign
         e.preventDefault();
@@ -54,7 +58,9 @@ export const CampaignSelection = () => {
         <div className="campaigns">
             <h3> Joined Campaigns </h3>
             <ul>
-                
+                {campaigns.map((campaign) => {
+                    return <li> {campaign} </li>
+                })}
             </ul>
         </div>
         </>
