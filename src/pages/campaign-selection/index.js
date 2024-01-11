@@ -52,7 +52,10 @@ export const CampaignSelection = () => {
         </form>
 
         <div className="campaigns">
-
+            <h3> Joined Campaigns </h3>
+            <ul>
+                
+            </ul>
         </div>
         </>
     );
