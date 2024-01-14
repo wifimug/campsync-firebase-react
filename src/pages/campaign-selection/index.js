@@ -5,6 +5,7 @@ import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 import { NavBar } from '../../navbar';
 import { useGetCampaigns } from '../../hooks/useGetCampaigns';
 import { useGetCampaignByID } from '../../hooks/useGetCampaignByID';
+import './styles.css';
 
 export const CampaignSelection = () => {
     const navigate = useNavigate();
@@ -58,11 +59,11 @@ export const CampaignSelection = () => {
             <h3> Joined Campaigns </h3>
             <ul>
                 {campaigns.map((campaign) => {
-                    return <li>
-                        <h4>
+                    return <li className='campaignOption'>
+                        <h3 className='campaignName'>
                             Name: {campaign["name"]}
-                        </h4>
-                        <h5>
+                        </h3>
+                        <h5 className='campaignDesc'>
                             Description: {campaign["description"]}
                         </h5>
                         <div className="campaignSelect" onClick={async () => {

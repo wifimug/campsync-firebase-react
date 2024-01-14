@@ -1,0 +1,42 @@
+@import "../../theme-variables.css";
+
+.campaigns {
+    color: var(--navbar-color)
+}
+
+.campaignOption {
+    border: 2px solid;
+    border-color: var(--navbar-color);
+    border-radius: 5px;
+    padding-bottom: 10px;
+    margin: 5px;
+}
+
+.campaignSelect {
+    cursor: pointer;
+    border-color: var(--red-button-color);
+    border-radius: 16px;
+    padding: 10px 20px;
+    color: white;
+    background-color: var(--red-button-color);
+    display:inline-block;
+}
+
+.campaignName {
+    color: var(--navbar-color);
+}
+
+.campaignDesc {
+    color: var(--navbar-color);
+}
+
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+li {
+    width: 49%;
+}
