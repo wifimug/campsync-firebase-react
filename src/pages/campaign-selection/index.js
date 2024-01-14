@@ -34,6 +34,7 @@ export const CampaignSelection = () => {
         <NavBar/>
         <h1>CampaignSelection</h1>
         <form className="createCampaign" onSubmit={createCampaignSubmit}>
+            <label> Name: </label>
             <input 
                 type="text"
                 placeholder="Campaign Name"
@@ -41,6 +42,7 @@ export const CampaignSelection = () => {
                 required
                 onChange={(e) => setCampaignName(e.target.value)}
             />
+            <label> Description: </label>
             <input 
                 type="text"
                 placeholder="Campaign Description"

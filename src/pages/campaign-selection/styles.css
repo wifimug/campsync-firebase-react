@@ -30,6 +30,25 @@
     color: var(--navbar-color);
 }
 
+form {
+    border: 2px solid;
+    border-color: var(--navbar-color);
+    padding: 10px;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 5px;
+    color: var(--navbar-color);
+}
+
+
+input {
+    padding: 5px;
+    border: none;
+    background-color: var(--background-color);
+    border-bottom: 1px solid;
+    border-color: var(--navbar-color);
+}
 
 ul {
     list-style-type: none;
