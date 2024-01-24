@@ -4,6 +4,8 @@ import { useNavigate, Navigate } from "react-router-dom";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 import './styles.css';
 import { NavBar } from "../../navbar";
+import { setDoc, getDoc, doc } from "firebase/firestore";
+import { db } from "../../config/firebase-config";
 
 export const Auth = () => {
 
@@ -12,13 +14,27 @@ export const Auth = () => {
     
 
     const signInWithGoogle = async () => {
+   
         const results = await signInWithPopup(auth, provider);
         const authInfo = {
+            email: results.user.email,
             userID: results.user.uid,
             name: results.user.displayName,
             profilePhoto: results.user.photoURL,
             isAuth: true,
         };
+        const collectionRef = doc(db, "users", authInfo.email)
+        const existingUser = await getDoc(collectionRef)
+        if (existingUser.exists()) {
+            console.log("exisitng user")
+            const userData = existingUser.data()
+            authInfo.userID = userData["uid"]
+        } else {
+            console.log("not exist")
+            await setDoc(doc(db, "users", authInfo.email), {
+                uid: authInfo.userID
+            })
+        }
         localStorage.setItem("auth", JSON.stringify(authInfo));
         navigate("/expense-tracker");
     }
