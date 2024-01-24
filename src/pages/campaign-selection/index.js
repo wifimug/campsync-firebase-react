@@ -16,6 +16,7 @@ export const CampaignSelection = () => {
     const [campaignName, setCampaignName] = useState("");
     const [description, setDescription] = useState("");
     const [campaignID, setCampaignID] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const { campaigns } = useGetCampaigns();
 
@@ -33,14 +34,22 @@ export const CampaignSelection = () => {
     };
 
     const joinCampaignSubmit = async (e) => {    //form for creating a new campaign
+        let errorMessage;
         e.preventDefault();
-        await joinCampaign({
-            userID,
-            campaignID
-        });
+        try {
 
-        setCampaignID("");
-        navigate("/campaign-summaries");
+            await joinCampaign({
+                userID,
+                campaignID
+            });
+    
+            setCampaignID("");
+            navigate("/campaign-summaries");
+
+        } catch (err) {
+            setErrorMessage(err.message);
+        }
+
     };
 
     return (
@@ -67,6 +76,7 @@ export const CampaignSelection = () => {
             <button type="submit"> Create Campaign </button>
         </form>
 
+        <p>{errorMessage}</p>
         <form className="joinCampaign" onSubmit={joinCampaignSubmit}>
             <label> Campaign ID: </label>
             <input 

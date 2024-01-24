@@ -1,8 +1,8 @@
-import { collection, updateDoc, getDoc, addDoc, arrayUnion, doc } from "firebase/firestore";
+import { collection, updateDoc, getDoc, addDoc, arrayUnion, doc, query, where } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 
 export const useJoinCampaign = () => {
-    const playerCollectionRef = collection(db, "players");
+    const playersCollectionRef = collection(db, "players");
     const joinCampaign = async ({
         userID,  
         campaignID
@@ -15,18 +15,24 @@ export const useJoinCampaign = () => {
             await updateDoc(campaignRef, {
                 players: arrayUnion(userID)
             });
-            //console.log("id of new campaign: ",campaignRef.id);
-            localStorage.setItem("currentCampaign", campaignRef.id);
-    
-            addDoc(playerCollectionRef, {
-                campaign: campaignRef.id,
-                isDM: false,
-                name: campaignID + " Character",
-                user: userID
-            });
+            
+            localStorage.setItem("currentCampaign", campaignID);
+
+            const queryPlayers = query(playersCollectionRef, where("campaign", "==", campaignID), where("user", "==", userID));
+
+            if (queryPlayers.empty) {
+                addDoc(playersCollectionRef, {
+                    campaign: campaignID,
+                    isDM: false,
+                    name: campaignID + " Character",
+                    user: userID
+                });
+            } else {
+                throw Error("Already joined campaign")
+            }
 
         } else {
-            console.log("Campaign does not exist.")
+           throw Error("Campaign does not exist");
         }
 
     };
