@@ -4,15 +4,18 @@ import { useCreateCampaign } from "../../hooks/useCreateCampaign";
 import { useGetUserInfo } from '../../hooks/useGetUserInfo';
 import { NavBar } from '../../navbar';
 import { useGetCampaigns } from '../../hooks/useGetCampaigns';
+import { useJoinCampaign } from '../../hooks/useJoinCampaign';
 import { useGetCampaignByID } from '../../hooks/useGetCampaignByID';
 import './styles.css';
 
 export const CampaignSelection = () => {
     const navigate = useNavigate();
     const { createCampaign } = useCreateCampaign();
+    const { joinCampaign } = useJoinCampaign();
     const { userID } = useGetUserInfo();
     const [campaignName, setCampaignName] = useState("");
     const [description, setDescription] = useState("");
+    const [campaignID, setCampaignID] = useState("");
 
     const { campaigns } = useGetCampaigns();
 
@@ -26,6 +29,17 @@ export const CampaignSelection = () => {
 
         setCampaignName("");
         setDescription("");
+        navigate("/campaign-summaries");
+    };
+
+    const joinCampaignSubmit = async (e) => {    //form for creating a new campaign
+        e.preventDefault();
+        await joinCampaign({
+            userID,
+            campaignID
+        });
+
+        setCampaignID("");
         navigate("/campaign-summaries");
     };
 
@@ -53,7 +67,16 @@ export const CampaignSelection = () => {
             <button type="submit"> Create Campaign </button>
         </form>
 
-        <form className="joinCampaign">
+        <form className="joinCampaign" onSubmit={joinCampaignSubmit}>
+            <label> Campaign ID: </label>
+            <input 
+                type="text"
+                placeholder="Campaign ID"
+                value={campaignID}
+                required
+                onChange={(e) => setCampaignID(e.target.value)}
+            />
+            <button type='submit'> Join Campaign </button>
 
         </form>
 
