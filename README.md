@@ -16,6 +16,3 @@ To start the app locally, run this command in the root directory of the project:
 ```
 npm run start
 ```
-
-
-

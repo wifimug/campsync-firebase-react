@@ -1,15 +1,29 @@
 @import "../../theme-variables.css";
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .campaigns {
-    color: var(--navbar-color)
+    color: var(--navbar-color);
+}
+
+.campaigns h2{
+    text-align: left;
+    padding-left: 4em;
 }
 
 .campaignOption {
-    border: 2px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    background-color: antiquewhite;
     border-color: var(--navbar-color);
-    border-radius: 5px;
     padding-bottom: 10px;
-    margin: 5px;
+    margin: 1em;
+    width: 28%;
+    text-align: left;
+    padding-left: 1em;
+    height: 30vh;
 }
 
 .campaignSelect {
@@ -31,13 +45,8 @@
 }
 
 form {
-    border: 2px solid;
-    border-color: var(--navbar-color);
-    padding: 10px;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
-    margin-bottom: 5px;
+    width: auto;
+    margin-bottom: 2em;
     color: var(--navbar-color);
 }
 
@@ -54,6 +63,8 @@ ul {
     list-style-type: none;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    margin: 2em;
 }
 
 li {

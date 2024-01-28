@@ -55,8 +55,9 @@ export const CampaignSelection = () => {
     return (
         <>
         <NavBar/>
-        <h1>CampaignSelection</h1>
+        <h1>All Campaigns</h1>
         <form className="createCampaign" onSubmit={createCampaignSubmit}>
+            <h2> Create a Campaign</h2>
             <label> Name: </label>
             <input 
                 type="text"
@@ -78,6 +79,8 @@ export const CampaignSelection = () => {
 
         <p>{errorMessage}</p>
         <form className="joinCampaign" onSubmit={joinCampaignSubmit}>
+            
+            <h2> Join a Campaign</h2>
             <label> Campaign ID: </label>
             <input 
                 type="text"
@@ -91,21 +94,21 @@ export const CampaignSelection = () => {
         </form>
 
         <div className="campaigns">
-            <h3> Joined Campaigns </h3>
+            <h2> Your Campaigns </h2>
             <ul>
                 {campaigns.map((campaign) => {
                     return <li className='campaignOption'>
                         <h3 className='campaignName'>
-                            Name: {campaign["name"]}
+                            {campaign["name"]}
                         </h3>
                         <h5 className='campaignDesc'>
-                            Description: {campaign["description"]}
+                            {campaign["description"]}
                         </h5>
                         <div className="campaignSelect" onClick={async () => {
                             await localStorage.setItem("currentCampaign", campaign.id);
                             navigate("/campaign-summaries")
                         }}>
-                            Select 
+                            Enter
                         </div>
                     </li>
                 })}
