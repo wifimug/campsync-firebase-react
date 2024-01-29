@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAddTransaction } from "../../hooks/useAddTransaction";
 import { useGetTransactions } from "../../hooks/useGetTransactions";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
@@ -39,9 +39,20 @@ export const ExpenseTracker = () => {
         setDescription("");
         setTransactionAmount(0);
     };    
+
+    const [charData, setCharData] = useState("")
+
+    useEffect(() => {
+        fetch("/character-data").then(result => result.json()).then(data => {
+            setCharData(data["data"]["name"])
+        })
+    })
+
+ 
     return (
     <>
     <NavBar/>
+    <h1>CURRENT Character: {charData}</h1>
     <div className="expense-tracker">
         <div className="container">
             <h1> {name}'s Expense Tracker </h1>
