@@ -7,6 +7,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../../navbar";
+import { useGetCharacter } from "../../hooks/useGetCharacter";
+
 
 export const ExpenseTracker = () => {
     const { addTransaction } = useAddTransaction();
@@ -14,6 +16,7 @@ export const ExpenseTracker = () => {
     const { transactions, transactionTotals } = useGetTransactions();
     const { balance, income, expenses } = transactionTotals;
     const navigate = useNavigate();
+    const { charData } = useGetCharacter();
     
     const [description, setDescription] = useState("");
     const [transactionAmount, setTransactionAmount] = useState(0);
@@ -39,6 +42,7 @@ export const ExpenseTracker = () => {
         setDescription("");
         setTransactionAmount(0);
     };    
+
     return (
     <>
     <NavBar/>
