@@ -13,6 +13,11 @@ The deployed website can be found [here](https://campsync-d1774.web.app/).
 
 ## Local Hosting
 To start the app locally, run this command in the root directory of the project:
+- to start the backend
+```
+npm run start-api
+```
+- to start the frontend
 ```
 npm run start
 ```
