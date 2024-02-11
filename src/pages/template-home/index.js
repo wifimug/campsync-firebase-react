@@ -43,7 +43,13 @@ export const ExpenseTracker = () => {
     const [charData, setCharData] = useState("")
 
     useEffect(() => {
-        fetch("/character-data").then(result => result.json()).then(data => {
+        fetch("/character-data", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({"characterid": '101991519'})
+        }
+        ).then(result => result.json()).then(data => {
+            console.log("heilo")
             setCharData(data["data"]["name"])
         })
     })
