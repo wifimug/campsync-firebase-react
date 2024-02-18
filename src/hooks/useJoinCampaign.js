@@ -25,7 +25,8 @@ export const useJoinCampaign = () => {
                     campaign: campaignID,
                     isDM: false,
                     name: campaignID + " Character",
-                    user: userID
+                    user: userID,
+                    charID: null
                 });
             } else {
                 throw Error("Already joined campaign")

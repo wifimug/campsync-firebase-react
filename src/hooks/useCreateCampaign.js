@@ -23,7 +23,8 @@ export const useCreateCampaign = () => {
             campaign: campaignRef.id,
             isDM: true,
             name: campaignName + " Character",
-            user: userID
+            user: userID,
+            charID: null
         });
 
     };

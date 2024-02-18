@@ -40,25 +40,10 @@ export const ExpenseTracker = () => {
         setTransactionAmount(0);
     };    
 
-    const [charData, setCharData] = useState("")
-
-    useEffect(() => {
-        fetch("/character-data", {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({"characterid": '101991519'})
-        }
-        ).then(result => result.json()).then(data => {
-            console.log("heilo")
-            setCharData(data["data"]["name"])
-        })
-    })
-
- 
     return (
     <>
     <NavBar/>
-    <h1>CURRENT Character: {charData}</h1>
+    <h1>CURRENT Character: </h1>
     <div className="expense-tracker">
         <div className="container">
             <h1> {name}'s Expense Tracker </h1>
