@@ -6,6 +6,7 @@ import { ExpenseTracker } from './pages/template-home';
 import { CampaignSelection } from './pages/campaign-selection';
 import { CampaignSummaries } from './pages/campaign-summaries';
 import { DMPage } from './pages/dm-page';
+import { AddSummary } from './pages/add-summary'; 
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/campaign-selection" exact element={<CampaignSelection />} />
           <Route path="/campaign-summaries" exact element={<CampaignSummaries />} />
           <Route path="/dmpage" exact element={<DMPage />} />
+          <Route path="/add-summary" exact element={<AddSummary />} />
         </Routes>
       </Router>
     </div>
