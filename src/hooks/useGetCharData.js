@@ -4,20 +4,23 @@ import { useGetUserInfo } from './useGetUserInfo';
 import { db } from "../config/firebase-config";
 
 
-export const useGetCharData = (charID) => {
+export const useGetCharData = () => {
     const [charName, setCharName] = useState("");
 
-    useEffect(() => {
+    const getCharData = (charID) => {
         fetch("/character-data", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({"characterid": charID})
         }
         ).then(result => result.json()).then(data => {
-            console.log("heilo")
             setCharName(data["data"]["name"])
         })
-    })
+    }
 
-    return { charName };
+    useEffect((charID) => {
+        getCharData(charID)
+    }, [])
+
+    return { charName, getCharData };
 }
